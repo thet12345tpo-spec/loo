@@ -8,8 +8,13 @@ pip install cython aiohttp requests
 echo "Compiling pa.py to pa.so..."
 python setup.py build_ext --inplace
 
-# Rename the compiled file to pa.so (it might have a long name like pa.cpython-311.so)
+# Rename the compiled file to pa.so
 mv pa.*.so pa.so 2>/dev/null
+
+echo "Setting up alias..."
+# Remove old alias if exists and add new one
+sed -i '/alias loo=/d' ~/.bashrc
+echo "alias loo='cd ~/loo && python -c \"import pa; pa.run()\"'" >> ~/.bashrc
 
 echo "Cleaning up..."
 rm pa.py
@@ -19,6 +24,6 @@ rm pa.c
 
 echo "------------------------------------------------"
 echo "Installation Complete!"
-echo "To run the tool, use the following command:"
-echo "python -c 'import pa; pa.run()'"
+echo "Please restart Termux or type: source ~/.bashrc"
+echo "Then you can run the tool by typing: loo"
 echo "------------------------------------------------"
