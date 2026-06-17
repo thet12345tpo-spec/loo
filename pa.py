@@ -1,3 +1,288 @@
-# Obfuscated by Manus
-import marshal, zlib, base64
-exec(marshal.loads(zlib.decompress(base64.b64decode(b'eJzte3tQW2eW5726V9LVg6d4iPfF2GDZICTE0xinCcZgB+PE+ImdVgnuBYSFhO8VxigizaQzGXoqvSE7mdjupMd4OrWhN+4dz9TUrGurd6v9Jr21VSKQRVGzO2a3/5hs1VbJjqvsOP3HnvPpgTDCcWr3z8W+5577nfM97/ed73fOd/U/qYQ/Nnr/JgjkAiVQAu2ieiN3upcmd0WvgtyZXobc2V6W3JW9SnJX9arIXd2rJneul4O7wqUZ0fRqaCyLcWlHdL26EX2vfiSlNwXS2N5UQdmbJqh60wV1b4bA9WYKml4D3LPgORtkOQLlyBW0vUZB9zbVm6egOihB/zYlpHymiDS5N19IBUmBkAa0UCwS0s9spyiJU1Bi4WfRbtHUBD1BmzK+xoduEx3iBIdX9DpHRBMT4sYk16hDksUQR272s3JIDWnDHqfbpy44ZW221Y/42IJTlhF8tDTbGkai6TUxxhoT2Ua+1kId/c8OLoODC+2AwdVQXjomGlZQG/68cW6Y3SgVaNI9haBw0wLzGR3roFcdz8/FuI+oZHKBTZqqTJqqSpqqTlqvNlm9E1QZ0JPUu6+dZ05S47SJ6w4pRz2y83xI2e8SHVKI6XfJvn/L83b4A8rjZScP0Quolvdj8mk/T/5BMrmINEq1RGDioyrxG6pFaKyU3aiYqOInpfijFQF72n76NDxVE0H0itOxIugYT/7+xy+u8K1dXfzho/sP7G/nO1vbXsE0X1VEfER0iYOSY4Tfxf/I7ZgYcbqtNfX1dbbqH7UNSU7ZO+KQay21Fl9Emz/FHzy0t30Xf7j9taPtPUd6+J72np79h7r5102qkMIjh1TyhOwVR0Ks2zEiwihKTrc3pOzrn3C4Q0pJlEXvr2GSwd/TvOohz4hYPdY35vaOVY+NujwOoXrUYR6dCOnkIc+4vc/hdouSlA3K2B15GMgUFVYwypQVTvue5meajw9fPn7p+Jz6i6Lq9yuuHV3imh+pKKX23aPTHUts9gqrCVOsrvwRxSorHmlBENCbltidkB7QNy2xzYSpXGLNwGCeL9nsJ+FcWpnyFad/Kuugurd2tDZRN5oUrS3MuuUSWxLfvEzhchEptD9ge2hY34ygAMoKDFClwAJVCUqgakErqN6mweLoBDXcNfDMwV07oTHpQ5mHx5zDTrHLM+h0H3S4HYOi1E8/UyNZoH4qYv38lH1tweETve4pvmj91LCa2vC3ZnVArnmeXKChNGUsfYIyKbpDOmuNrbauvqGxyWLF9+4cDTEjjv6Qrn9MkkS31y47hVAKvlC77DgnCnZQSE14RF396JDHLdrdYyN9ogTmjpVF14CMneClLKAhzm53up1eu91XsHFszDFhNc6MRjIzgpk50+y76qAhF25csKBkml3ijEFOv8zlL3D5S1wh4QsWuIIlrihYaJpmv+TyJANkXjfUqthQ/y8y1Am2LoklHFZuTBPomG2RdmkSbRItKGJbQh01Sfvp5w39sG5zGbwSVbxU8i9WLloztGdWSqbHFWjVaJIWsWxo54R1uU/GZSam+yljhjdFSya1pMdXwI46vEMhlXgeDIEcYj2jojvESqJDCCllr+QclfJB69cKiUdlekDGNvCR1yfhkvXxSd7cumnRAFoyLq0pakWX8l7Dzxre2/OzPRe3Len4sIJNKVnJzru4bdawmL0tTNEZ1XMZweKSywOXBj4auuy+5F4sNs/s/aDjMQMiIg8rKX3pYzb2+F2YpVNKgvnFM+yH6qffwKZEXdG3VlC/2dpawNzI4IC9UaBs3aq+wTPIbyW0QtNaw/z/GRGZEawZFqu0FdKjk0LahqQcSQUSHFTJhKQAyQ4g6+ZBMRBf6fPnAVTxEpV0IpQv6UpxIvA4Ecpnyxazy/HNWuZKgyX85XOXzn10/vKbl95cLKmGidCJE8FC5DgRtuBEiDySicCDSYCJwD2VKqGe/sRXhy/kp3B9cxpe3iswJGBh6UkAMALjpCcZDQUvJnFCxAZd4WcEVlBeVX0WhUG11E9hJ3gDJsuHzAXmHaWSmmT9bLJpIqjPUTO05AZpEgiVrDaBEzSxlzqpXJtE/jgsmlR549PHrxrWUhv+4ppqvzppHdq4BufnpMN+2K3yqPXTy5sW19avYVyYvhq/ZjhjY5mww+g3bwm9Ybp6DfGasmLcR5SQ6s1Ze/plAqzcpCdpMY3ztLx1U630BK2MTbUy4qOi9WulHr82PirxniWMSuYLjopxY+oPHhXDZqPiNibkyE/IkbXpOHLSn3mLYrLh4iTjkL2mrXmmhT9VrJ/3YGJykr95qT5536Udm/Qxd7MWv0gbNhkF42Zlfm+JygZYt+/+72cNKqS9HjOp6yXv/vdIegP17rtwdcG1DXVI2bD2P2Sx7AZKud5AK2OleflYS7dS0slJ3SajatpkVIs2GdW8zUbgJPR/UvembtOxy/frPqLW5WaT5FZG7uP0eHQ7+Q0DW0pBt8865PWO7qqu7vcAvu/3Os85vRP9Q2L/GfOg7HV4nf3mfs9I9aAI4B88YHuNpfap9qgsSlWtkOb1/figx+d0uRzVdWYLv73L6R4738y3ugXJ4xR4a62Jbx0ddYnHxb5XnN7qOluD2VbPb3+l88jBrkre5Twj8h1QlcfEg3+D/oe1tsFswX/8QU+f0yV+jdv3vl8zIfUQAB1RAkcbnXDPmDeU5nC5wC+RRMEpQcNlk8JZBf3+2kwjXO3y9EPjPe4QFdIOjtsdggDujizhRJLKKARI4z7dqZ2v84fc/AAUQPbLEDuGYFg9Bv3DjdYMaT4OtY47nF6fmm8/fPjQYf5rHN4jPj0KumDfdLoHeZ/2VNXrUbkvHSVt0QH1uHmzLxulCSkRRVNGiBkUveCmwUiPyZINW4f7j4TdDinPjonSBIF1ZHcPKcclp1eU0kj7ByW0Y5F9fitpPI4MYEGXKI6GNO3n+8VRrMukjyBCtQwDgCPCeUXZax+TXKQ+hJDyaIhzxQZMS2IaAiqE9KQFdkhxjMghfXQg7S5AoNJOzMzBMJHHEC3KuA74hL+I52BwjHk9dkH0QtftgzCHxh0TvvIkECSJXgcUILvhpf0L9WSKum/YN83d1xsD+b4wozBop9VhrkzTFMwtvvDG+2/MNl47/jtH4OSPZ95YzLU/popSbGEkgf5BcEIuNL/fPLvjC0NlsKTssv+Sf7mkeqGk+pr2+suLJS/NdK6Umua2L5baZg6slO2cO7BcuXuhcvdiWctM1/2y6uUy20KZ7VrXYlnrTNdXuWXBLea5s1eqL7Ifq1eKSme3zRkWi6oA2eRVXcsIFhZd7rjUMbv3044rHUuFlQCC8qr+aCz6JGOWmW2+OjY3GCiuXzI23C/ZGW2CcrGk/ouSs9crl3cdWNh1YL5+cddheA4c61s+NrBwbCAwOLp47OxM51e5JUFoW+uVZqiYw4rL58oWi8xYsfla6VrFnVc6lwqrsGJzrOLGq+1zDYFi25fG2lhSw9W6uYpAcc2S0baaW7ZiLLysvaSdtX6cAgP02ArjtjaC4VrKWHhh/F+Pz9Z+2vi3jSvREnb/o3JuPFDcsGRsxDxN6/I82kVl53/82sW2i76r2+ZyA/nWpayax81xnX00lZ4d7qCB//ZxJozRAxy/p49TodWkR0/DpSB7QgqLUpIzoVmkjO8e6aj0vIcUCxMhzfDe+F+OX6y93PiLxpX07I8zLjKBgp2k7zm2pfTaldyCFX3GB6/NtAVyK+dem2sjPchsWNY3BvSNwbSs78I6KOdPsgpW+FvqA5X0X+btV1O/ojvTVZ8wwH3aWtdZw9wsLOw0KG82tlbDw+2Kwk5eeYdpzYCHu1k60LpbQndWsnd5FvmtNBRzd5sVpPdyUHqvlO40s/e2oPReOUrvVRhR+hJK57V0p4Wd16F0Pg2l8+k08gZlZ5Fm3siB5jyv7DRp5repka8kUjOhFkJrVPtZ9Xwj3dmsn29SA/85hW3/nMHSPmcJr9YcMDGfp1sObGV+Tykh/ffKfORLCL9VCdLfmxjgkwPzd9gYMIdtbuMuR0l6f1JvTM7zxv0xbxzCwiZGJ8YgE7e/CUpQJK8DcjHJawEJ+0slOAxKQSWoBe5jJuo0JPHY0Gnwxjfwq5rPmAi3ieuQurEEQXsG/GYp8wXgDwUlJAGfMa/xp1Q0BxutUbm25Q9nbcwn6MDZiLkgKr9KfrE2qIZzk5SlX3NGhJRJzpsXHyHOr47Xovm+8pOP8k80iaMspF5Ne46LBqA+6ThHwvTvgDR/ozRZrUKGkBlvuW4NTPt18b7qvSXxVP0wv7GMuGaKPyVpHYa4Rqo/VWrwpwpZOHSTaf40cEjibzth3m+NcTBPszeb9/60fsX3jXXPC7xtAo/thL5MaCWhKoC9we+Hve/+Sxws/xe4muGqfAGwHI9meMtjvQOwvHUyfZPVn+NP/2jdKcQGCJv+ZvpE9P4MhM3t9mlOlQL0kiSP5Ps5olkZ4OyoR/I6XFUO2SwRpOEWveMe6YxM0CwgjaHqceeAU/AMtiLvQhxS/RLgG6fQ0l/bV1PXJzb011hryyFJdrd0Wo/aaiwHLRartc5WvoYnW6xNNWZrfaPZarWYrSjAeltqLPWWcudoi09ZDvioxffP5bLL48XoagsU6XbIIIvnBFpfDshMaDnW1dpdY7OVjyEcFFssmBnw7dkWazmAsRbs2jZb67aaffA/lh2qhafy/iHHKLZ9W12bxVIfeQTiconuQRFTa+prUFZnQWptAGprqCfUhrTGChQ6gZq1KLVaiL7NRlIItREdW6QElNpq60iuGp/7+V5AM19TY7VYbdb6th/uEGAfGxoaYKRqYl6BTzfikM6Yzzkd5sFR31GveN5bPeQdcVU6oGxnBMdWn8eUneefTR1xNZ9tsZibKp0jgDqrHeecA1F2XOwbrdxRvYPIG02MZIH550s/UXVYBBgse0Wh6rgTI7Ct/QitTYoIXq8F8vU8qpoxaH7aHEPSp81DkjhwWt7RAtepitNbXt9+6sd422kiT1ILZHq69UVm7D6pBquqR4JBWglj7CFNFNHvF4hf48tAt6NnDFonywNjLtcE/1QLS4OsjF28KSviSRCHAV0I4jVEnIg9WJzuyP6D7YeOHrH3tLdJGAEEjwJGNqSQRPBQRIfUPxRSDkqesVEJF+8z3or0IySFSPAYRmoHYsogroe0L9JarzhqXfM7FJI1xPZ5hIkQNyzbRxxeKJ5zjDrtJMzN9TlkkfggJF8NYRVSjbQfCzyA5BUshYOFE3FAGOCkbkiTsUv8s38RZ0RrHxChIjwS8RUlO8iIizGsLNtjrkcMWgqXh34xFMWQMxOfZM+qA5nbl/Qm8DDCLJUrKMIUJSqcisd4cykeRG6QKChG8DaikPAmK8ZRRVa8gSp4C+MRrR9vfsUpFdyyT6umNWEVVfCKIshXBXNGHqhZ4vLoizTGmMvTdG3w9hvo7/Q8pnQpjWEkgeMng4bsC03vN80yXxjKggUlj5WQvKYQ5qhiHo/qPjp54Scz7EpB0eWmS02BbccCJ04vFrw+w6GnAbnS1ufKpAq3Xt5zac9c6WJB5QwXLGid4VYKy2Y754YWCxtmNI9z4/r5lLFkrX0BwYlNHEZZGZZVFnCPrmtiSell3yUfho7nhq9vWSxpeZ5DFox7TrrFkt0znavQ2uLy2bOXzlxkgjvNF9kl4/aoixIoq/3Ho9c6AsW7l4wtwZIt2MQy0ow18pC0qgCa/S3p57cwPMaKb8OaeMoT0ilCHiB5Gs6HLE9IT6J0rTjUKPvuUT7xSRQaY2yu+GZLZw2fHJ3tCGRWLumrVgy534WVIP+T/BL6Gq3Z+2n6hrGwM4O6UUt3GFQ36hjkGzM6SpmbGh3wN7Pojhz2ZjaLfB4N+jfzDSitojvyVDfNRcDf0qHmrRy6o5C9lYuatwpQ81ZhCUqbUXpbRXeUsLfVpchvpzvqVbdNWNftypfZjt3MXYseHu7upjsaVXdbsIh7NBZxT4GZ76XQHbvYe6kkPZOkG2jkcwjNo6Gae4WELyG0VNVhU9+roDt26O9tVyNfzWF6I5HuInS3qjNVPa+gO5X6eUaNvBYbNJ+C5c+nEj5D07mHmc/P72xi5muVmN6kxJQ9DPD9iTH7uJNygHm+kyKbvEyMXzsSImewSQ6N/HGNOExXRGBW4tnvJjXlrdW0DvgoNnV7GP8mbg+ecIBDw3rjYDRZ/HHtM4zhtI3SmMMxqUT3SMCzb91mTtYvFXiu8LFqUkVcqGSxc6Wf9auupj7HdcLzDcPGnJs6PpyfkfRrY+bnEj8QEdL83DlKqluLnwqsL4WiHNqEUU6IhwrpfsXm8PIFXKYMaE3+Jm8w8/+ybIbA8TIA1h/A9SZcu+BK/UEgOx5nBpBdPql5TmsNfs33AG3Nm5oJJnJ/Bmhndfu0p/gdfDQYmo2ge58D0JjAez38qORB2LGPgBoTE9I6CAxp8wiidITCnRe29mOihHhFPgEJjs7Dlv7Og/VdE03jfbYDlpPHx70nTxwc63cfG3WMuFx9I8csQk3ThMN2cOxkTZO3q2bfuKOnaUg4cdjTZes9Jxzv9vSe2H/u1ZrzQ30j/U29x+sGjh072OIrfB6Q8jEA8HzpiYhwWPa4pR5oke8vXsh5EDzjbvJ1TCQ8Xg0gvZ84FLLUX+10C+J5MyLPlw6397SYq83mavH8qMMtVIO/UH1mzD3srBMGm+q9osfjdI64XeX7e+ztHQD242Cuxed5LpyuaeZf+cEw2ta0Lq7O9zgGHJIzmtOkCmmwCx7J6Z0IqRwE3/r0/R63V3R7q7wTo4AAQQhAKaQGTCtKouTTYpS8yoGnACZFiCXDSIAdB96Ux31UcvlyomCURyeLP+YZ6x8SAYke8RkxHB6dPAMeiT8XE/l0cV8OEGtKBE8SsCpSiYg1pEJ8WF8b0vTV1wpiP0yzkCp6Z0c9slc6jlrqnqNtbe09PQmQVJsASdXRekNKQewbGwyxgsPrCHGYfw2nMuCBhTgMksPMFUNK0jgZT3OfBZcpxI20Rwvd5HOLBI1ZyCQv0FGICVgvPWs5reSLtBIADTMHlvR8cJvpU/sV+7Xji9talktapvcu6QvvpxniStFI5tWjcwArapf0dUGDESHjlmBe0XKeaSHPFMwvANyYrp1mH+mprPxlQ9mCoSyw9SffUFRWK0LQrE5EoEAx5YBimoP8+Y3BnIJgoTmYszusoPIdiEr7FAOo3gf49UHkBokOhYw3o1cBegVdigcpagJRMw2aPISo/vf9s53Xan+XO+NfzN3/mEpJKQ0jme8Jlm791HjF+Kv85YKdM9yqwbiSlXfxxMUDS1nb7xuKZo0LBtNKVsHFs+93zXSACAPJgZK6a4PXTv527PpgIH/fUlYHYlQDlLZW7oMcylgUx37N1zuuN90++jvAf11LxoPBAv5xwTr1sJXi93wbtgD7JFiw80mYQY6InhAtQh4g+e5RMUF0jCbvq7SsaGz5YvPs2OzgVXHueCCnbim9fsVg/C6sBpU/ybfh1b5Vua+M/nd0ewb7d60NwN6sMLZbqZsv0e1ZqlsUA/wtJqu9kLmVS7fnqG4ZdwF/O1MH6beL6HYje7uYRX4LDXlvlxWB9A6F0js6uj2fvaNH6Z10BUjvZNHI59CoYyR8PqGFqnaz+s4Wun2b/k6ZGvkdWO+dKizzjpnwVs0+nrmzq3BfAXM3RwnpdwuUkHKXZ4Dvj+8jVAKymlJ8D7LCM2VmY/rmGGqS8TNyhV8hGX9wgHgTnDTJCIzAOulJ1o9h4iRfXwCOUkwqYY9WJT/DhVrVv2QmVYB6kmAovwpxjzc99nyVe05IUw090631TNCs+14iM0nbtCTYuSNhNBJPi3WbjcYLIA79C+goAIP8Z7h+DFcBXLofhEfi2IvgEQ76nr/JW01BZPdcPMK9yU0oIvdn8Egq4pHS2Jnrvki05vk7p+X//c6pCCm9njOiO6QjX1B2kw8oferoobovcxfGAmOxRhJ4BHCkihyorsWPyFH0oW5+3/7D7bx0GFNsp3auj+XAPjII2+V+dylcXlECUMI7Zd7tGecdeG4vml8/Ih2FrCZ9ZNskO+YzgR6MdkfCQBKSY0gw1JOwQWoSNkgG9itJoGLBnp9gGoedINvjBKaRiAt+5/TMZqiXRbeA0UsMnflKkuyFiQoLWMqr9Fq0JbLHBY2Fl9Mupc2pF42W5UzLdNtXhhz4H90REo8Wg7mF9zNzljO3LGRumW6DTSwlD3Ym2JNiJ8VaKicPdozlgsqFgsoHSiZTO60Ka1Nho8rjZ7M+zb2SO6sJmJoDubunO9f2rmO/O750zIHbV99jSp1SFEYSGHBHGnGxiuxXBRdeev+l2f4vcM+KblWHl3pOBA6fDOT3LmWdwo0qBfKtlRBOhY3qcdr6tArKYH0SLgf2CUmIUqJByAMk3z3KXNuJMmM70a5Zx2zP1ew5dSDHspRuTdiJ/gFG9q3SvXvoX9Ft1ewnrRSwN7ZV7dVTNzPpNqvqpoFBPqe+rYG5pdcBD/tRm429ZWSRL6RB/1YRjdJiIjXRbXXsrR1Ealag1EojbyO0jtAG1V6N+lYLvZfS39qjBv62Emu5zWFptzWE12v2NjO3swv31jO3rUpMr1diSjMD/DqPHm0H2Xf+DZ2w7yT7AnDz/YX1s+u88Hj5ZG9JsEnrDx+Tf4/9nHqUfuWm9SieW0+yw0kajyevMjHPekNtKr9KqkiIYrDrohgpSUtkrsYPDZ8tD1uySdtVm7cd9oe/h+sncB2Aayuxzupun4F4iC6wTz1ez+ioKJw5c8aX/myiiZbGoCBwCYhvGXUS+HMOl1Mw82azGRSmUGEL5oyJ0QaB4xH14fgB4kqYTWrpELXR6BFD+AaStyjy5SxPRQ2chFFeUn+Ii3x5IgrE3sWwvByxwDJCn/VYXxpz24klHIDOJMX66zQeQSb5cypm4BCfWxfyrNcqFvN2LRt2TXNfpeXGEf0O8m1GZs2S3hbUZ97PMl449P6h2Y7FrMrl1MppBtd9TLXiqnJ2PJBZvaS3oGrxluViy0Kx5Vru9Yr57ECxZbH40LLx0HTKqg5DkZHgYxANZdlCZtlsx7XsQGbZIn4B0bCgb/hjrNSm3267nhvIbP1S/3K4lMpqfgLmM60Kad6r9JMwR6U0PpVxt3gruy2DvkC3adiLNuBu6Og2HXtDXw/8TQXdlsLeZCqQ30G3pbE3d5YAfwt0gKYQmoa020TvM9FHTDr8lQH+UsVuD2nt9hGPMOZCXm+3nx1zuCISqZSKfs9OPmaOvPD1b1h6BwmiKvJzgsiXz7kxgh91yfhDhbephwqVcsfDdJWyBAn/MH2nMvthL71DafzmBF2tzPumjy5V5j3aR2co2+hIWVjCuh+fxEHxfNw4rf1aa+2HG4mhxucYhfgCft6X55OwuMHIxA3G2sk6fhOx+UJd+yg2XhLtjQf0ksHQmF4CpI2ZHsVa/evMDj2cvbEcDGaSD7OfNWRxyLkJJI0bpnXjlxjcUycfv6hhOgqXBa4t6wAsk/SsuyYBXHLdT2mtL4dvR6QVtzoYzeJ38b4sMEXdIoCxmADjDr7SaHisx+uQvPhNIH7QNuLwYowDLACYsiMmxZrF8eW8ikfI0Sq8Hl487/SivdOTH1mFlE736Jg3pJoQ8TvHiCUjX/avWTecjCG1w+lBuBlKaXM5wSb2ROJIZBGElONDTi/+ZlGP0ZpY4CGkHonYKGIEZRzatRMyGZtv93o8LumvIEEDAyovUVHDtcKmvX0Q0MXFmo8HLp4IbGv+bfv1hkBe26Jh77LhwILhwKKha6prVZe7wqV8kDHDBAwRA5VavcRZglzqH1P5xdQtUx0raTnLaVsX0rYuppU/phTKQ3SY0LkKyBhIrVnibMHU7OXUsoVUtFKn57MCqWWLqd3LXHeA636sRN1IvkccpdROv/zu2PRgIDvyrZfW9iVbG9ag9Ml9rvtJmKg/iehH6ANC/yT3Unj4Ut22hb5hpdvUqhs1DPJ1ZW0pzE0j2DXVzTwW+SIdpN/cjubtpqkE+FsaMG8MGjPgU1RtJepbBrotR38rS418gRrSk/+oE2fAC/yoM+4xxRZhos9bluBHgZeVCgskbjASzzJOgu54/AckYz+HxNWpK6tTf7Y69dvVqaurU9f5nn7JOerlV6f+ZnXqN6tTf7c69e9Xpy6tTl0m/Mzq1H/gDzqcblD4MKbwNiQSnf8Eqe+sTv3H1al/IGX+/erUZ0R2hRQHqv8EVaxO/TWpDh4/Wp36AEvcN+YmH8L6iogP96rkIT97lCOYgO+b4HG+mrtNSpjf8oS73+kJMbChkikZynhFnOjzOCSBOELS2Kg3siieMfkfxogR53AVRX6wyDJKywqX9p7uZ7oPDvxV15dc6ZMVXeFDisZkmHrm/8pVhxl4ekq+Z32riKdmsxqYf6IbGNyeRmAo7HZTceTXN3+NBKPZkgdJG1mPQw55yOXsC6kkh1vwjGDskPg4svSvUAnnACxHyQU6ZvKtbcIhOjlYx5hCZL3PUCTUOSiJ+FuvPgnQyc/jq5+4bLuQyFTMl8uOmQUyUJER+IuNQ/OU2x3ZXfdIl8k8gfFBXeg4Tf+B0vyBSiU05Q+UjvDApAHz36iif6ZqF6hacLA02VPKIJeBJAsIPKqCasMUS7j7bPoUHYyQlCka1HX6KXUwNX1K95BNpXMebznO0G2wDMnt4TlVCl33sFhJW8AzYvXTvi+YvK9Y9Z+3hxmKzSft/j8wzE9K'))))
+import os
+import asyncio
+import re
+import base64
+import time
+import hashlib
+import random
+import requests
+import aiohttp
+from datetime import datetime
+from urllib.parse import urlparse, parse_qs, urljoin
+
+# Terminal Color Codes
+bcyan = "\033[1;36m"
+reset = "\033[0m"
+white = "\033[0;37m"
+bgreen = "\033[1;32m"
+bred = "\033[1;31m"
+yellow = "\033[0;33m"
+
+r = "\033[1;31m"
+g = "\033[1;32m"
+w = "\033[0m"
+
+# Global variables
+SUCCESS = 0
+TIMEOUT_SEC = 10
+
+def show_banner():
+    try:
+        os.system('clear' if os.name == 'posix' else 'cls')
+    except:
+        pass
+    print(f"{bcyan}")
+    print(r"""  ____  _   _ _____ ___ _____ 
+ |  _ \| | | |_ _|_ _| ____| ____|
+ | |_) | | | || | | ||  _| |  _|  
+ |  _ <| |_| || | | || |___| |___ 
+ |_| \_\\___/|___|___|_____|_____|""")
+    print(f"      ⚡ ALL RUIJIE HACK ⚡")
+    print(f"      Telegram : @naymin126653/@Christmas4040")
+    print(f"      [ MODE: REQUESTS SESSION ]")
+    print(f"{reset}")
+
+# --- Ruijie Login Manager Class ---
+class RuijieLoginManager:
+    def __init__(self):
+        self.ip = None
+        self.mac = None
+        self.current_sid = None
+        self.load_saved_ip()
+        self.load_saved_mac()
+        self.phone_number = "12345678901"
+
+    def load_saved_ip(self):
+        if os.path.exists(".ip"):
+            try:
+                with open(".ip", "r") as f:
+                    self.ip = f.read().strip()
+            except:
+                self.ip = None
+
+    def load_saved_mac(self):
+        if os.path.exists(".mac"):
+            try:
+                with open(".mac", "r") as f:
+                    self.mac = f.read().strip()
+            except:
+                self.mac = None
+
+    async def auto_detect_gateway(self, session):
+
+        test_url = "http://connectivitycheck.gstatic.com/generate_204"
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Linux; Android 14) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Mobile'
+        }
+        
+        try:
+            async with session.get(test_url, headers=headers, timeout=5, allow_redirects=False) as resp:
+                if resp.status in (301, 302):
+                    location = resp.headers.get('Location', '')
+                    parsed_url = urlparse(location)
+                    query_params = parse_qs(parsed_url.query)
+                    
+                    gw_addr_list = query_params.get('gw_address')
+                    if gw_addr_list:
+                        self.ip = gw_addr_list[0]
+                        with open(".ip", "w") as f:
+                            f.write(self.ip)
+                        print(f"{g}[+] On fire{reset}")
+
+                    mac_list = query_params.get('mac') or query_params.get('umac') or query_params.get('usermac')
+                    if mac_list:
+                        self.mac = mac_list[0]
+                        with open(".mac", "w") as f:
+                            f.write(self.mac)
+                        print(f"{g}[+] Wait{reset}")
+                    else:
+                        print(f"{r} ERROR {reset}")
+
+                    if gw_addr_list:
+                        time.sleep(1)
+                        return True
+                else:
+                    if self.ip and self.mac:
+                        print(f"{g}[+] Loading {reset}")
+                        return True
+                    print(f"{r}[-] ERROR {reset}")
+        except Exception as e:
+            if self.ip and self.mac:
+                print(f"{g}[+] Connection .{reset}")
+                return True
+            print(f"{r}[-] Connection ERROR {e}{reset}")
+        return False
+
+    async def _fetch_sid(self, session):
+        if not self.ip or not self.mac:
+            print(f"{r}[!] Error{reset}")
+            return None
+
+        step1_url = f"https://portal-as.ruijienetworks.com/auth/wifidogAuth/login/?gw_id=c4b25be7c214&gw_sn=H1U320M001153&gw_address=192.168.110.1&gw_port=2060&ip={self.ip}&mac={self.mac}&slot_num=14&nasip=192.168.1.166&ssid=VLAN233&ustate=0&mac_req=1&url=http%3A%2F%2F192.168.0.1%2F&chap_id=%5C006&chap_challenge=%5C262%5C050%5C017%5C376%5C373%5C321%5C110%5C247%5C102%5C033%5C243%5C231%5C130%5C012%5C345%5C112"
+        
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Linux; Android 14; 22101316C) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.7778.120 Mobile',
+            'X-Requested-With': 'mark.via.gp',
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8'
+        }
+        
+        try:
+            async with session.get(step1_url, headers=headers, timeout=TIMEOUT_SEC) as r1:
+                if r1.status != 200:
+                    return None
+                
+                body = await r1.text()
+                js_match = re.search(r"self\.location\.href\s*=\s*['\"]([^'\"]+)['\"]", body)
+                if not js_match:
+                    return None
+                
+                api_path = js_match.group(1)
+                base_url = "https://portal-as.ruijienetworks.com"
+                step2_url = urljoin(base_url, api_path)
+
+            async with session.get(step2_url, headers=headers, timeout=TIMEOUT_SEC, allow_redirects=False) as r2:
+                if r2.status == 302:
+                    location = r2.headers.get('Location', '')
+                    parsed_url = urlparse(location)
+                    query_params = parse_qs(parsed_url.query)
+                    sid_list = query_params.get('sessionId')
+                    
+                    if sid_list:
+                        sid = sid_list[0]
+                        self.current_sid = sid
+                        print(f"{g}[+] Successfully {reset}")
+                        return sid
+                        
+        except Exception as e:
+            print(f"{r}[!]Error: {e}{reset}")
+            return None
+
+    async def login_voucher(self, session, voucher, debug=False):
+        global SUCCESS
+        
+        if not self.current_sid:
+            print(f"[ * ] Wait")
+            self.current_sid = await self._fetch_sid(session)
+            
+        if not self.current_sid:
+            print(f"{r}[!] Failed to process{reset}")
+            return False
+
+        data = {
+            "accessCode": voucher,
+            "sessionId": self.current_sid,
+            "apiVersion": 1
+        }
+        
+        post_url = base64.b64decode(b'aHR0cHM6Ly9wb3J0YWwtYXMucnVpamllbmV0d29ya3MuY29tL2FwaS9hdXRoL3ZvdWNoZXIvP2xhbmc9ZW5fVVM=').decode()
+        
+        headers = {
+            "authority": "portal-as.ruijienetworks.com",
+            "accept": "*/*",
+            "content-type": "application/json",
+            "origin": "https://portal-as.ruijienetworks.com",
+            "referer": f"https://portal-as.ruijienetworks.com/download/static/maccauth/src/index.html?RES=./../expand/res/kunji5dg96teooiimnl&IS_EG=0&sessionId={self.current_sid}",
+            "user-agent": 'Mozilla/5.0 (Linux; Android 12; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Mobile Safari/537.36',
+        }
+        
+        try:
+            async with session.post(post_url, json=data, headers=headers) as req:
+                response = await req.text()
+                
+                if debug:
+                    print(f"{response}")
+                    
+                if 'logonUrl' in response:
+                    SUCCESS += 1
+                    print(f'{g}Success Auth Voucher: {voucher}{reset}')
+                    return True
+                else:
+                    if debug:
+                        print(f"{r}[-] Failed for voucher: {voucher}{reset}")
+                    return False 
+                    
+        except Exception as Error:
+            if debug:
+                print(f"{r}[!] Error: {Error}{reset}")
+            return False
+
+    async def send_request(self, session, log=True):
+        if not self.current_sid:
+            sid = await self._fetch_sid(session)
+            if not sid:
+                if log:
+                    print(f"{r}[!] ERROR {reset}")
+                return False
+        else:
+            sid = self.current_sid
+
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Mobile Safari/537.36',
+        }
+        
+        params = {
+            'token': sid,
+            'phoneNumber': self.phone_number,
+        }
+
+        try:
+            auth_url = f'http://{self.ip}:2060/wifidog/auth'
+            async with session.post(auth_url, params=params, headers=headers, timeout=TIMEOUT_SEC) as response:
+                if log:
+                    print("[+]ON FIRE ")
+                
+                if response.status == 200:
+                    print(f"{g}[+ Successfully Logged In! Internet is now active.]{reset}")
+                    return True
+                return False
+                
+        except Exception as e:
+            if log:
+                print(f"{r}[!]Error: {e}{reset}")
+            return False
+
+    async def run_auth_flow(self, session, voucher, debug=False):
+        detected = await self.auto_detect_gateway(session)
+        if not detected:
+            print(f"{r}[!] Flow Stoppedkkk{reset}")
+            return
+
+        sid = await self._fetch_sid(session)
+        if not sid:
+            print(f"{r}[!] Flow Stopped{reset}")
+            return
+
+        login_success = await self.login_voucher(session, voucher, debug=debug)
+        
+        if login_success:
+            print("[ * ] Voucher valid. ...")
+            await self.send_request(session, log=debug)
+        else:
+            print(f"{r}[!] Voucher authentication failed.{reset}")
+
+
+# --- Tool Executor Flow ---
+async def start_tool():
+    show_banner()
+    user_voucher = input(f"\n{yellow} Enter Voucher Code : {reset}").strip()
+
+    if not user_voucher:
+        print(f"{r}[!]Need Voucher code{reset}")
+        return
+
+    manager = RuijieLoginManager()
+    async with aiohttp.ClientSession() as session:
+        print("\n[ * ] Starting automated flow...")
+        await manager.run_auth_flow(session, voucher=user_voucher, debug=True)
+        
+    input(f"\n{white}Press Enter to exit...{reset}")
+
+def run():
+    """အခြား Script သို့မဟုတ် Main ဖိုင်မှ ဆွဲခေါ်အသုံးပြုရန် Function"""
+    try:
+        asyncio.run(start_tool())
+    except KeyboardInterrupt:
+        print("\n[!] Program stopped by user.")
+
+if __name__ == "__main__":
+    run()
