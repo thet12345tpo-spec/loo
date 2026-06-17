@@ -1,8 +1,13 @@
 import os
+import asyncio
 import re
 import base64
 import time
+import hashlib
+import random
 import requests
+import aiohttp
+from datetime import datetime
 from urllib.parse import urlparse, parse_qs, urljoin
 
 # Terminal Color Codes
@@ -17,6 +22,8 @@ r = "\033[1;31m"
 g = "\033[1;32m"
 w = "\033[0m"
 
+# Global variables
+SUCCESS = 0
 TIMEOUT_SEC = 10
 
 def show_banner():
@@ -35,116 +42,247 @@ def show_banner():
     print(f"      [ MODE: REQUESTS SESSION ]")
     print(f"{reset}")
 
+# --- Ruijie Login Manager Class ---
 class RuijieLoginManager:
     def __init__(self):
         self.ip = None
         self.mac = None
         self.current_sid = None
-        self.session = requests.Session()
+        self.load_saved_ip()
+        self.load_saved_mac()
         self.phone_number = "12345678901"
 
-    def check_internet(self):
+    def load_saved_ip(self):
+        if os.path.exists(".ip"):
+            try:
+                with open(".ip", "r") as f:
+                    self.ip = f.read().strip()
+            except:
+                self.ip = None
+
+    def load_saved_mac(self):
+        if os.path.exists(".mac"):
+            try:
+                with open(".mac", "r") as f:
+                    self.mac = f.read().strip()
+            except:
+                self.mac = None
+
+    async def auto_detect_gateway(self, session):
+
         test_url = "http://connectivitycheck.gstatic.com/generate_204"
-        try:
-            resp = self.session.get(test_url, timeout=5, allow_redirects=False)
-            return resp.status_code == 204
-        except:
-            return False
-
-    def auto_detect_gateway(self):
-        test_url = "http://connectivitycheck.gstatic.com/generate_204"
-        headers = {'User-Agent': 'Mozilla/5.0 (Linux; Android 14)'}
-        try:
-            resp = self.session.get(test_url, headers=headers, timeout=5, allow_redirects=False)
-            if resp.status_code in (301, 302):
-                location = resp.headers.get('Location', '')
-                parsed_url = urlparse(location)
-                query_params = parse_qs(parsed_url.query)
-                
-                gw_addr = query_params.get('gw_address')
-                if gw_addr: self.ip = gw_addr[0]
-                
-                mac = query_params.get('mac') or query_params.get('umac')
-                if mac: self.mac = mac[0]
-                
-                return True
-        except:
-            pass
-        return self.ip is not None
-
-    def fetch_sid(self):
-        if not self.ip: return None
-        
-        step1_url = "https://portal-as.ruijienetworks.com/auth/wifidogAuth/login/?gw_id=c4b25be7c214&gw_sn=H1U320M001153&gw_address=192.168.110.1&gw_port=2060&ip=192.168.110.24&mac=5e:81:22:0b:f0:74&slot_num=14&nasip=192.168.1.166&ssid=VLAN233&ustate=0&mac_req=1&url=http%3A%2F%2F192.168.0.1%2F&chap_id=%5C006&chap_challenge=%5C262%5C050%5C017%5C376%5C373%5C321%5C110%5C247%5C102%5C033%5C243%5C231%5C130%5C012%5C345%5C112"
-        headers = {'User-Agent': 'Mozilla/5.0 (Linux; Android 14)'}
-        
-        try:
-            r1 = self.session.get(step1_url, headers=headers, timeout=TIMEOUT_SEC)
-            js_match = re.search(r"self\.location\.href\s*=\s*['\"]([^'\"]+)['\"]", r1.text)
-            if not js_match: return None
-            
-            step2_url = urljoin("https://portal-as.ruijienetworks.com", js_match.group(1))
-            r2 = self.session.get(step2_url, headers=headers, timeout=TIMEOUT_SEC, allow_redirects=False)
-            
-            if r2.status_code == 302:
-                location = r2.headers.get('Location', '')
-                sid = parse_qs(urlparse(location).query).get('sessionId')
-                if sid:
-                    self.current_sid = sid[0]
-                    return self.current_sid
-        except:
-            pass
-        return None
-
-    def login_voucher(self, voucher):
-        if not self.current_sid: self.fetch_sid()
-        if not self.current_sid: return False
-
-        post_url = "https://portal-as.ruijienetworks.com/api/auth/voucher/?lang=en_US"
-        data = {"accessCode": voucher, "sessionId": self.current_sid, "apiVersion": 1}
         headers = {
-            "Content-Type": "application/json",
-            "Referer": f"https://portal-as.ruijienetworks.com/download/static/maccauth/src/index.html?sessionId={self.current_sid}"
+            'User-Agent': 'Mozilla/5.0 (Linux; Android 14) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Mobile'
         }
         
         try:
-            resp = self.session.post(post_url, json=data, headers=headers, timeout=TIMEOUT_SEC)
-            return 'logonUrl' in resp.text
-        except:
-            return False
+            async with session.get(test_url, headers=headers, timeout=5, allow_redirects=False) as resp:
+                if resp.status in (301, 302):
+                    location = resp.headers.get('Location', '')
+                    parsed_url = urlparse(location)
+                    query_params = parse_qs(parsed_url.query)
+                    
+                    gw_addr_list = query_params.get('gw_address')
+                    if gw_addr_list:
+                        self.ip = gw_addr_list[0]
+                        with open(".ip", "w") as f:
+                            f.write(self.ip)
+                        print(f"{g}[+] On fire{reset}")
 
-    def send_final_auth(self):
-        if not self.ip or not self.current_sid: return False
-        auth_url = f'http://{self.ip}:2060/wifidog/auth'
-        params = {'token': self.current_sid, 'phoneNumber': self.phone_number}
+                    mac_list = query_params.get('mac') or query_params.get('umac') or query_params.get('usermac')
+                    if mac_list:
+                        self.mac = mac_list[0]
+                        with open(".mac", "w") as f:
+                            f.write(self.mac)
+                        print(f"{g}[+] Wait{reset}")
+                    else:
+                        print(f"{r} ERROR {reset}")
+
+                    if gw_addr_list:
+                        time.sleep(1)
+                        return True
+                else:
+                    if self.ip and self.mac:
+                        print(f"{g}[+] Loading {reset}")
+                        return True
+                    print(f"{r}[-] ERROR {reset}")
+        except Exception as e:
+            if self.ip and self.mac:
+                print(f"{g}[+] Connection .{reset}")
+                return True
+            print(f"{r}[-] Connection ERROR {e}{reset}")
+        return False
+
+    async def _fetch_sid(self, session):
+        if not self.ip or not self.mac:
+            print(f"{r}[!] Error{reset}")
+            return None
+
+        step1_url = f"https://portal-as.ruijienetworks.com/auth/wifidogAuth/login/?gw_id=c4b25be7c214&gw_sn=H1U320M001153&gw_address=192.168.110.1&gw_port=2060&ip={self.ip}&mac={self.mac}&slot_num=14&nasip=192.168.1.166&ssid=VLAN233&ustate=0&mac_req=1&url=http%3A%2F%2F192.168.0.1%2F&chap_id=%5C006&chap_challenge=%5C262%5C050%5C017%5C376%5C373%5C321%5C110%5C247%5C102%5C033%5C243%5C231%5C130%5C012%5C345%5C112"
+        
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Linux; Android 14; 22101316C) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.7778.120 Mobile',
+            'X-Requested-With': 'mark.via.gp',
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8'
+        }
+        
         try:
-            resp = self.session.get(auth_url, params=params, timeout=TIMEOUT_SEC)
-            return resp.status_code == 200
-        except:
+            async with session.get(step1_url, headers=headers, timeout=TIMEOUT_SEC) as r1:
+                if r1.status != 200:
+                    return None
+                
+                body = await r1.text()
+                js_match = re.search(r"self\.location\.href\s*=\s*['\"]([^'\"]+)['\"]", body)
+                if not js_match:
+                    return None
+                
+                api_path = js_match.group(1)
+                base_url = "https://portal-as.ruijienetworks.com"
+                step2_url = urljoin(base_url, api_path)
+
+            async with session.get(step2_url, headers=headers, timeout=TIMEOUT_SEC, allow_redirects=False) as r2:
+                if r2.status == 302:
+                    location = r2.headers.get('Location', '')
+                    parsed_url = urlparse(location)
+                    query_params = parse_qs(parsed_url.query)
+                    sid_list = query_params.get('sessionId')
+                    
+                    if sid_list:
+                        sid = sid_list[0]
+                        self.current_sid = sid
+                        print(f"{g}[+] Successfully {reset}")
+                        return sid
+                        
+        except Exception as e:
+            print(f"{r}[!]Error: {e}{reset}")
+            return None
+
+    async def login_voucher(self, session, voucher, debug=False):
+        global SUCCESS
+        
+        if not self.current_sid:
+            print(f"[ * ] Wait")
+            self.current_sid = await self._fetch_sid(session)
+            
+        if not self.current_sid:
+            print(f"{r}[!] Failed to process{reset}")
             return False
 
-def start():
+        data = {
+            "accessCode": voucher,
+            "sessionId": self.current_sid,
+            "apiVersion": 1
+        }
+        
+        post_url = base64.b64decode(b'aHR0cHM6Ly9wb3J0YWwtYXMucnVpamllbmV0d29ya3MuY29tL2FwaS9hdXRoL3ZvdWNoZXIvP2xhbmc9ZW5fVVM=').decode()
+        
+        headers = {
+            "authority": "portal-as.ruijienetworks.com",
+            "accept": "*/*",
+            "content-type": "application/json",
+            "origin": "https://portal-as.ruijienetworks.com",
+            "referer": f"https://portal-as.ruijienetworks.com/download/static/maccauth/src/index.html?RES=./../expand/res/kunji5dg96teooiimnl&IS_EG=0&sessionId={self.current_sid}",
+            "user-agent": 'Mozilla/5.0 (Linux; Android 12; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Mobile Safari/537.36',
+        }
+        
+        try:
+            async with session.post(post_url, json=data, headers=headers) as req:
+                response = await req.text()
+                
+                if debug:
+                    print(f"{response}")
+                    
+                if 'logonUrl' in response:
+                    SUCCESS += 1
+                    print(f'{g}Success Auth Voucher: {voucher}{reset}')
+                    return True
+                else:
+                    if debug:
+                        print(f"{r}[-] Failed for voucher: {voucher}{reset}")
+                    return False 
+                    
+        except Exception as Error:
+            if debug:
+                print(f"{r}[!] Error: {Error}{reset}")
+            return False
+
+    async def send_request(self, session, log=True):
+        if not self.current_sid:
+            sid = await self._fetch_sid(session)
+            if not sid:
+                if log:
+                    print(f"{r}[!] ERROR {reset}")
+                return False
+        else:
+            sid = self.current_sid
+
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Mobile Safari/537.36',
+        }
+        
+        params = {
+            'token': sid,
+            'phoneNumber': self.phone_number,
+        }
+
+        try:
+            auth_url = f'http://{self.ip}:2060/wifidog/auth'
+            async with session.post(auth_url, params=params, headers=headers, timeout=TIMEOUT_SEC) as response:
+                if log:
+                    print("[+]ON FIRE ")
+                
+                if response.status == 200:
+                    print(f"{g}[+ Successfully Logged In! Internet is now active.]{reset}")
+                    return True
+                return False
+                
+        except Exception as e:
+            if log:
+                print(f"{r}[!]Error: {e}{reset}")
+            return False
+
+    async def run_auth_flow(self, session, voucher, debug=False):
+        detected = await self.auto_detect_gateway(session)
+        if not detected:
+            print(f"{r}[!] Flow Stoppedkkk{reset}")
+            return
+
+        sid = await self._fetch_sid(session)
+        if not sid:
+            print(f"{r}[!] Flow Stopped{reset}")
+            return
+
+        login_success = await self.login_voucher(session, voucher, debug=debug)
+        
+        if login_success:
+            print("[ * ] Voucher valid. ...")
+            await self.send_request(session, log=debug)
+        else:
+            print(f"{r}[!] Voucher authentication failed.{reset}")
+
+
+# --- Tool Executor Flow ---
+async def start_tool():
     show_banner()
-    voucher = input(f"\n{yellow} Enter Voucher Code : {reset}").strip()
-    if not voucher: return
+    user_voucher = input(f"\n{yellow} Enter Voucher Code : {reset}").strip()
+
+    if not user_voucher:
+        print(f"{r}[!]Need Voucher code{reset}")
+        return
 
     manager = RuijieLoginManager()
-    print(f"\n{bgreen}[ * ] Keep-Alive Monitoring Started (Requests Mode).{reset}")
-    
-    while True:
-        try:
-            if not manager.check_internet():
-                print(f"{yellow}[!] Connection lost. Re-authenticating...{reset}")
-                if manager.auto_detect_gateway():
-                    if manager.login_voucher(voucher):
-                        if manager.send_final_auth():
-                            print(f"{g}[+] Re-connected Successfully!{reset}")
-            time.sleep(5)
-        except KeyboardInterrupt:
-            print("\n[!] Stopped by user.")
-            break
-        except Exception as e:
-            time.sleep(5)
+    async with aiohttp.ClientSession() as session:
+        print("\n[ * ] Starting automated flow...")
+        await manager.run_auth_flow(session, voucher=user_voucher, debug=True)
+        
+    input(f"\n{white}Press Enter to exit...{reset}")
+
+def run():
+    """အခြား Script သို့မဟုတ် Main ဖိုင်မှ ဆွဲခေါ်အသုံးပြုရန် Function"""
+    try:
+        asyncio.run(start_tool())
+    except KeyboardInterrupt:
+        print("\n[!] Program stopped by user.")
 
 if __name__ == "__main__":
-    start()
+    run()
